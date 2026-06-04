@@ -180,3 +180,14 @@ htmlcov/
 .fseventsd
 .AppleDouble
 .LSOverride
+
+# =========================
+
+# Image files
+
+# =========================
+
+*.png
+*.jpg
+*.webp
+*.bmp
