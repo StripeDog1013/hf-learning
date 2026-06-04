@@ -12,7 +12,11 @@
 
 *.so
 
-# Distribution / packaging
+# =========================
+
+# Distribution / Packaging
+
+# =========================
 
 .Python
 build/
@@ -88,11 +92,13 @@ Desktop.ini
 
 *.log
 logs/
+runs/
 tensorboard/
+lightning_logs/
 
 # =========================
 
-# Hugging Face
+# Hugging Face Cache
 
 # =========================
 
@@ -114,12 +120,11 @@ huggingface/
 
 # =========================
 
-# Training Outputs
+# Training Artifacts
 
 # =========================
 
-outputs/
-checkpoints/
+*.tfevents*
 
 # =========================
 
@@ -127,35 +132,19 @@ checkpoints/
 
 # =========================
 
-data/
-models/
+data/*
+models/*
+outputs/*
+checkpoints/*
 
-# Keep directory structure
-
-#!data/.gitkeep
-#!models/.gitkeep
-#!outputs/.gitkeep
-#!checkpoints/.gitkeep
-
-# =========================
-
-# TensorBoard
+!data/.gitkeep
+!models/.gitkeep
+!outputs/.gitkeep
+!checkpoints/.gitkeep
 
 # =========================
 
-runs/
-
-# =========================
-
-# PyTorch Lightning
-
-# =========================
-
-lightning_logs/
-
-# =========================
-
-# Testing
+# PyTest / Coverage
 
 # =========================
 
@@ -165,7 +154,7 @@ htmlcov/
 
 # =========================
 
-# IDE
+# JetBrains IDE
 
 # =========================
 
@@ -173,7 +162,7 @@ htmlcov/
 
 # =========================
 
-# Misc
+# Temporary Files
 
 # =========================
 
@@ -181,3 +170,13 @@ htmlcov/
 *.swo
 *~
 
+# =========================
+
+# OS Generated Files
+
+# =========================
+
+.Trashes
+.fseventsd
+.AppleDouble
+.LSOverride
