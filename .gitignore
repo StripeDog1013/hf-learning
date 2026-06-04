@@ -1,0 +1,183 @@
+# =========================
+
+# Python
+
+# =========================
+
+**pycache**/
+*.py[cod]
+*$py.class
+
+# C extensions
+
+*.so
+
+# Distribution / packaging
+
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# =========================
+
+# Virtual Environments
+
+# =========================
+
+venv/
+.venv/
+env/
+ENV/
+
+# Conda
+
+conda-meta/
+*.conda
+*.tar.bz2
+
+# =========================
+
+# Jupyter
+
+# =========================
+
+.ipynb_checkpoints/
+
+# =========================
+
+# VSCode
+
+# =========================
+
+.vscode/
+
+# =========================
+
+# macOS
+
+# =========================
+
+.DS_Store
+
+# =========================
+
+# Windows
+
+# =========================
+
+Thumbs.db
+Desktop.ini
+
+# =========================
+
+# Logs
+
+# =========================
+
+*.log
+logs/
+tensorboard/
+
+# =========================
+
+# Hugging Face
+
+# =========================
+
+.cache/
+huggingface/
+
+# =========================
+
+# Model Files
+
+# =========================
+
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+
+# =========================
+
+# Training Outputs
+
+# =========================
+
+outputs/
+checkpoints/
+
+# =========================
+
+# Project Data
+
+# =========================
+
+data/
+models/
+
+# Keep directory structure
+
+!data/.gitkeep
+!models/.gitkeep
+!outputs/.gitkeep
+!checkpoints/.gitkeep
+
+# =========================
+
+# TensorBoard
+
+# =========================
+
+runs/
+
+# =========================
+
+# PyTorch Lightning
+
+# =========================
+
+lightning_logs/
+
+# =========================
+
+# Testing
+
+# =========================
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+# =========================
+
+# IDE
+
+# =========================
+
+.idea/
+
+# =========================
+
+# Misc
+
+# =========================
+
+*.swp
+*.swo
+*~
+
