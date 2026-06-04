@@ -132,10 +132,10 @@ models/
 
 # Keep directory structure
 
-!data/.gitkeep
-!models/.gitkeep
-!outputs/.gitkeep
-!checkpoints/.gitkeep
+#!data/.gitkeep
+#!models/.gitkeep
+#!outputs/.gitkeep
+#!checkpoints/.gitkeep
 
 # =========================
 
