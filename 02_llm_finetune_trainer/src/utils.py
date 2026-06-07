@@ -1,15 +1,10 @@
 from pathlib import Path
 
 import torch
-
 from transformers import set_seed
 
 
 def create_directory(path: str) -> None:
-    """
-    ディレクトリ作成
-    """
-
     Path(path).mkdir(
         parents=True,
         exist_ok=True,
@@ -17,10 +12,6 @@ def create_directory(path: str) -> None:
 
 
 def initialize_seed(seed: int) -> None:
-    """
-    乱数シード固定
-    """
-
     set_seed(seed)
 
     if torch.cuda.is_available():
@@ -28,16 +19,7 @@ def initialize_seed(seed: int) -> None:
         torch.cuda.manual_seed_all(seed)
 
 
-def count_trainable_parameters(model) -> tuple[int, int]:
-    """
-    学習対象パラメータ数取得
-
-    Returns
-    -------
-    trainable_params
-    total_params
-    """
-
+def count_trainable_parameters(model):
     trainable_params = sum(
         p.numel()
         for p in model.parameters()
@@ -53,10 +35,6 @@ def count_trainable_parameters(model) -> tuple[int, int]:
 
 
 def print_model_info(model) -> None:
-    """
-    モデル情報表示
-    """
-
     trainable_params, total_params = (
         count_trainable_parameters(model)
     )
@@ -77,3 +55,61 @@ def print_model_info(model) -> None:
         f"Trainable Ratio      : "
         f"{100 * trainable_params / total_params:.2f}%"
     )
+
+
+def main():
+    print("=== utils.py Test ===")
+
+    print("\n[1] create_directory()")
+
+    test_dir = "./logs/utils_test"
+
+    create_directory(test_dir)
+
+    print(f"Created: {test_dir}")
+    print(f"Exists : {Path(test_dir).exists()}")
+
+    print("\n[2] initialize_seed()")
+
+    initialize_seed(42)
+
+    x = torch.rand(3)
+
+    initialize_seed(42)
+
+    y = torch.rand(3)
+
+    print("Tensor X:", x)
+    print("Tensor Y:", y)
+
+    print(
+        "Seed Test:",
+        torch.equal(x, y)
+    )
+
+    print(
+        "\n[3] count_trainable_parameters()"
+    )
+
+    model = torch.nn.Sequential(
+        torch.nn.Linear(10, 20),
+        torch.nn.ReLU(),
+        torch.nn.Linear(20, 1),
+    )
+
+    trainable, total = (
+        count_trainable_parameters(model)
+    )
+
+    print(f"Trainable: {trainable:,}")
+    print(f"Total    : {total:,}")
+
+    print("\n[4] print_model_info()")
+
+    print_model_info(model)
+
+    print("\n=== Test Complete ===")
+
+
+if __name__ == "__main__":
+    main()
