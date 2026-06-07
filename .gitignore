@@ -137,6 +137,11 @@ models/*
 outputs/*
 checkpoints/*
 
+*/data/*
+*/models/*
+*/outputs/*
+*/checkpoints/*
+
 !data/.gitkeep
 !models/.gitkeep
 !outputs/.gitkeep
