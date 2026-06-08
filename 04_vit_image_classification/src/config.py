@@ -20,6 +20,14 @@ DATASET_NAME = "AI-Lab-Makerere/beans"
 # Device
 # ==================================================
 
+# 物理GPUを1枚だけ見せる
+USE_CUDA_VISIBLE_DEVICES = True
+
+# 0: RTX 4070 Ti
+# 1: RTX 4000 Ada
+PHYSICAL_CUDA_ID = 0
+
+# CUDA_VISIBLE_DEVICES適用後、Pythonからは選んだGPUが cuda:0 に見える
 CUDA_ID = 0
 
 # ==================================================

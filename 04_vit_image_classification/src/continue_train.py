@@ -1,3 +1,13 @@
+import os
+
+from config import (
+    USE_CUDA_VISIBLE_DEVICES,
+    PHYSICAL_CUDA_ID,
+)
+
+if USE_CUDA_VISIBLE_DEVICES:
+    os.environ["CUDA_VISIBLE_DEVICES"] = str(PHYSICAL_CUDA_ID)
+
 import torch
 
 from transformers import (
