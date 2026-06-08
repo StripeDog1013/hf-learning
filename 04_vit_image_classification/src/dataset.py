@@ -38,7 +38,8 @@ def print_dataset_info(
 
 
 def get_label_names(dataset):
-    label_feature = dataset.features["label"]
+    label_names = get_label_column_name(dataset)
+    label_feature = dataset.features[label_names]
 
     return label_feature.names
 
