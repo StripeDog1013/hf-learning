@@ -14,7 +14,7 @@ from transformers import Trainer, TrainingArguments
 
 from config import (
     CUDA_ID,
-    BATCH_SIZE,
+    EVAL_BATCH_SIZE,
     OUTPUT_DIR,
     LOG_DIR,
     SEED,
@@ -58,11 +58,12 @@ def build_eval_args():
     return TrainingArguments(
         output_dir=OUTPUT_DIR,
         logging_dir=LOG_DIR,
-        per_device_eval_batch_size=BATCH_SIZE,
+        per_device_eval_batch_size=EVAL_BATCH_SIZE,#BATCH_SIZE,
         fp16=torch.cuda.is_available(),
         report_to="none",
         seed=SEED,
         remove_unused_columns=False,
+        eval_accumulation_steps=1,
     )
 
 
