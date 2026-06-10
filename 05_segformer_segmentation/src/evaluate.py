@@ -14,6 +14,7 @@ from transformers import Trainer, TrainingArguments
 
 from config import (
     CUDA_ID,
+    BATCH_SIZE,
     EVAL_BATCH_SIZE,
     OUTPUT_DIR,
     LOG_DIR,
@@ -29,41 +30,46 @@ from load_model import load_model_for_inference
 MODEL_PATH = f"{OUTPUT_DIR}/final_model"
 
 
-def compute_metrics(eval_pred):
-    logits, labels = eval_pred
+# def compute_metrics(eval_pred):
+#     logits, labels = eval_pred
 
-    predictions = np.argmax(logits, axis=1)
+#     logits = torch.tensor(logits)
 
-    if predictions.shape[-2:] != labels.shape[-2:]:
-        # Trainer側で既に揃っていることが多いが、念のため
-        return {}
+#     upsampled_logits = torch.nn.functional.interpolate(
+#         logits,
+#         size=labels.shape[-2:],
+#         mode="bilinear",
+#         align_corners=False,
+#     )
 
-    valid_mask = labels != 255
+#     predictions = upsampled_logits.argmax(dim=1).numpy()
 
-    correct = (
-        predictions[valid_mask]
-        == labels[valid_mask]
-    ).sum()
+#     valid_mask = labels != 255
 
-    total = valid_mask.sum()
+#     correct = (
+#         predictions[valid_mask]
+#         == labels[valid_mask]
+#     ).sum()
 
-    pixel_accuracy = correct / total if total > 0 else 0.0
+#     total = valid_mask.sum()
 
-    return {
-        "pixel_accuracy": float(pixel_accuracy),
-    }
+#     pixel_accuracy = correct / total if total > 0 else 0.0
+
+#     return {
+#         "pixel_accuracy": float(pixel_accuracy),
+#     }
 
 
 def build_eval_args():
     return TrainingArguments(
         output_dir=OUTPUT_DIR,
         logging_dir=LOG_DIR,
-        per_device_eval_batch_size=EVAL_BATCH_SIZE,#BATCH_SIZE,
+        per_device_eval_batch_size=EVAL_BATCH_SIZE,
         fp16=torch.cuda.is_available(),
         report_to="none",
         seed=SEED,
         remove_unused_columns=False,
-        eval_accumulation_steps=1,
+        eval_accumulation_steps=20,
     )
 
 
@@ -88,7 +94,7 @@ def main():
         model=model,
         args=build_eval_args(),
         eval_dataset=valid_dataset,
-        compute_metrics=compute_metrics,
+        compute_metrics=None, # compute_metrics,
     )
 
     metrics = trainer.evaluate()
