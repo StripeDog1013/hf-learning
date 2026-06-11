@@ -20,7 +20,8 @@ LOCAL_DATA_DIR = (
 # Model
 # ==================================================
 
-MODEL_NAME = "facebook/detr-resnet-50" # facebook/detr-resnet-101
+MODEL_NAME =  "facebook/detr-resnet-50"
+MODEL_NAME =  "facebook/detr-resnet-101"
 
 NUM_LABELS = 5
 
@@ -31,11 +32,11 @@ IMAGE_SIZE = 800
 # Training
 # ==================================================
 
-NUM_EPOCHS = 5 # 20 or 50
+NUM_EPOCHS = 20 # 4 or 20 or 50
 
-BATCH_SIZE = 8 # 8
+BATCH_SIZE = 4 # 4 or 8
 
-LEARNING_RATE = 1e-5 # 5e-5
+LEARNING_RATE = 5e-5 # 1e-5 or 5e-5
 
 WEIGHT_DECAY = 1e-4
 

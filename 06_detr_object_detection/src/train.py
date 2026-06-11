@@ -70,7 +70,7 @@ def build_training_args():
         eval_strategy=EVALUATION_STRATEGY,
         save_strategy=SAVE_STRATEGY,
         load_best_model_at_end=LOAD_BEST_MODEL_AT_END,
-        fp16=torch.cuda.is_available(),
+        fp16=False, # torch.cuda.is_available(), TRUEだとエラーで落ちる
         report_to="none",
         seed=SEED,
         remove_unused_columns=False,

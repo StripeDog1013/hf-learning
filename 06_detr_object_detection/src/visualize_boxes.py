@@ -27,9 +27,10 @@ from load_model import (
 MODEL_PATH = f"{OUTPUT_DIR}/final_model"
 
 # "train" or "validation"
-TARGET_SPLIT = "train"
+# TARGET_SPLIT = "train"
+TARGET_SPLIT = "validation"
 
-SCORE_THRESHOLD = 0.25
+SCORE_THRESHOLD = 0.50
 
 # Noneなら全件、整数なら件数制限
 MAX_SAMPLES = None # 20
