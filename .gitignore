@@ -142,10 +142,10 @@ checkpoints/*
 */outputs/*
 */checkpoints/*
 
-!data/.gitkeep
-!models/.gitkeep
-!outputs/.gitkeep
-!checkpoints/.gitkeep
+!*/data/.gitkeep
+!*/models/.gitkeep
+!*/outputs/.gitkeep
+!*/checkpoints/.gitkeep
 
 # =========================
 
