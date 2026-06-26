@@ -110,12 +110,11 @@ def load_pipeline(
 
     pipe.to(device)
 
-    if device.type == "cuda":
-        try:
-            pipe.enable_xformers_memory_efficient_attention()
-            print_header("xFormers enabled.")
-        except Exception as e:
-            print_header(f"xFormers not enabled: {e}")
+    try:
+        pipe.enable_xformers_memory_efficient_attention()
+        print_header("xFormers enabled.")
+    except Exception as e:
+        print_header(f"xFormers not enabled: {e}")
 
     return pipe
 

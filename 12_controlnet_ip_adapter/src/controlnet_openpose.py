@@ -99,13 +99,13 @@ def load_controlnet(
         CONTROLNET_OPENPOSE_MODEL,
         torch_dtype=(
             torch.float16
-            if device.type == "cuda"
-            else torch.float32
+            # if device.type == "cuda"
+            # else torch.float32
         ),
         variant=(
             "fp16"
-            if device.type == "cuda"
-            else None
+            # if device.type == "cuda"
+            # else None
         ),
         use_safetensors=True,
     )
@@ -121,8 +121,8 @@ def load_pipeline(
 ):
     dtype = (
         torch.float16
-        if device.type == "cuda"
-        else torch.float32
+        # if device.type == "cuda"
+        # else torch.float32
     )
 
     pipe = StableDiffusionXLControlNetPipeline.from_pretrained(
@@ -131,8 +131,8 @@ def load_pipeline(
         torch_dtype=dtype,
         variant=(
             "fp16"
-            if device.type == "cuda"
-            else None
+            # if device.type == "cuda"
+            # else None
         ),
         use_safetensors=True,
     )
